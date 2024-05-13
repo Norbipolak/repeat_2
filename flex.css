@@ -1,0 +1,269 @@
+body {
+    min-height: 8000px;
+}
+
+.flex-1 {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.flex-el {
+    width: 250px;
+    height: 250px;
+    border: 1px solid grey;
+    line-height: 250px;
+    text-align: center;
+}
+
+/*
+nagyon, fontos, hogy line-height annyinak kell lennie, mint a height-nak és akkor vertikálisan középen lesz és text-align: center, ezzel meg 
+horizontálisan 
+
+<div class="flex-1">
+    <div class="flex-el"></div>
+    <div class="flex-el"></div>
+    <div class="flex-el"></div>
+    <div class="flex-el"></div>
+</div>
+
+van egy div-ünk, ami majd display: flex lesz és abban vannak flex-el-ek, és akkor ha flex akkor bemennek egymás mellé 
+flex-wrap-vel tudjuk meghatározni, hogy az elemek, ha húzzuk be a képernyőt akkor és elérik az elemeket, akkor ezek összemenjenek 
+tehát flexibilisek legyenek, mindegyik elem ugyanolyan mértékben megy majd össze 
+de majd lesz olyan, hogy wrap, akkor meg ha húzzuk be, akkor az utolsó elem az majd be fog menni a következő sorba 
+*/
+
+.flex-2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*
+így viszont ha a flex-wrap az wrap akkor az utolsó bemegy a következő sorba, ha meg eléri a másodikat utolról akkor az is bemegy és így tovább 
+1 2 3 4 
+-> 
+1 2 3 
+4 
+-> 
+1 2 
+3 4 
+-> 
+1
+2
+3
+4
+*/
+
+.flex-3 {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+/*
+ez meg majd úgy, hogy nem ledobja az utolsó, hanem mintha feldobná és többi lesz alul 
+1 2 3 4 
+-> 
+4 
+1 2 3
+-> 
+3 4 
+1 2
+->
+4
+3
+2
+1
+********************************************************************************************************************************** 
+*/
+
+/*
+Flex-direction, hogy helyezkedjenek el az elemek 
+a flex-nek az a lényege, hogy az elemek be tudjanak menni egymás mellé, mert a legtöbb tag az block 
+de viszont flex-nél van egy olyan direction, hogy column és akkor az elemek nem egymás mellett lesznek, hanem egymás alatt 
+de miért csináljuk akkor ezt 
+->
+mert így az elemeket be tudjuk tenni horizontálisan és vertikálisan is középre a justify-content illetve az align-items-vel  
+*/
+
+.flex-4 {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-5 {
+    display: flex;
+    flex-direction: row;
+}
+
+/*
+a flex-direction: row az alapbeállítás, ilyenkor a az elemek bemennek egymás mellé 
+mivel itt nincsen beállítva de a flex-wrap az unwrap, ezért ha húzzuk be a képernyőt akkor mennek az elemek össze 
+*/
+
+.flex-6 {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/*
+ilyenkor az elemek egymás alatt lesznek, de viszont fordított sorrendben 
+4
+3
+2
+1
+*****************************************************************************************************************************
+*/
+/*
+Elemek poziociónálása 
+Horizontális pozició 
+*/
+
+.flex-8 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*
+Az elemeket a horizontálisan 6-féle képpen tudjuk poziociónálni 
+1. start -> az elemek a baloltól indulnak ->  |1, 2, 3, 4      |
+2. end -> az elemek jobbolon lesznel ->       |      1, 2, 3, 4|
+3. center -> középen lesznek az elemek ->     |   1, 2, 3, 4   |
+4. space-between -> ugyanolyan gap lesz közöttük, az első elem teljesen a bal oldalon lesz, az utolsó a jobb ->        |1     2     3    4|
+5. space-around -> ugyanolyan gap, de viszont fél gap-vel az első elem eltávolodik a faltól meg ugyanigy utolsó is ->  | 1    2    3    4 |
+6. space-evenly -> mindenhol ugyanakora a gap, elején és végén is a faltól ->                                          |  1   2   3   4   |
+
+ugyanígy vertikálisan is be tudjuk állítani az elemeket az align-items-vel 
+*/
+
+.flex-9 {
+    height: 800px; /*hogy lássuk, hogy lesznek az elemek*/
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 2px solid red;
+}
+
+/*
+most vegyük, hogy justify-content az mindig center 
+-> 
+align-items: start
+___________________________________________
+|                1 2 3 4                   |
+|                                          |
+|                                          |
+|                                          |
+|                                          |               
+|__________________________________________|
+
+align-items: end
+___________________________________________
+|                                          |
+|                                          |
+|                                          |
+|                                          |
+|                                          |               
+|________________ 1 2 3 4 _________________|
+
+align-items: center
+___________________________________________
+|                                          |
+|                                          |
+|               1 2 3 4                    |
+|                                          |
+|                                          |               
+|__________________________________________|
+
+fontos, hogyha több elem van kétsornyi, akkor egymástól a space-evenly meg ezeket a align-content-vel tudjuk majd beállítani
+    <h3>Vertikális poziciónálás2</h3>
+    <div class="flex-10">
+        <div class="flex-el">1</div>
+        <div class="flex-el">2</div>
+        <div class="flex-el">3</div>
+        <div class="flex-el">4</div>
+        <div class="flex-el">1</div>
+        <div class="flex-el">2</div>
+        <div class="flex-el">3</div>
+        <div class="flex-el">4</div>
+    </div>
+*/
+
+.flex-10 {
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    height: 800px;
+    border: 2px solid red;
+    flex-wrap: wrap;
+}
+
+/*
+align-content: space-between 
+
+___________________________________________
+|             1 2 3 4                      |
+|                                          |
+|                                          | 
+|                                          |
+|                                          |               
+|______________1 2 3 4 ____________________|
+
+align-content: space-around
+
+___________________________________________
+|                                          |
+|               1 2 3 4                    |
+|                                          | 
+|                                          |
+|               1 2 3 4                    |               
+|__________________________________________|
+
+és a space-evenly-nél meg mégközelebb vannak az elemek egymáshoz 
+**********************************************************************************************************************************/
+
+.flex-el-2 {
+    border: 1px solid grey;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+}
+/*
+<div class="flex-1">
+<div class="flex-el-2">1</div>
+<div class="flex-el-2">2</div>
+<div class="flex-el-2">3</div>
+<div class="flex-el-2">4</div>
+</div>
+
+és akkor így tök 200px hosszú és mivel nem adtunk meg width-et az meg alig valami, csak, hogy kiférjen a szám ami bele van írva 
+flex-grow!!!!!!!!!!!!!!!!!!!!!!!!!!!
+itt be tudjuk állítani, hogy az elemek egymáshoz képest mekkorák tudnak lenni, fontos, hogy mindegyiknek meg legyen adva egy flex-grow 
+    <div class="flex-1">
+        <div class="flex-el-2" style="flex-grow: 1;">1</div>
+        <div class="flex-el-2" style="flex-grow: 2;">2</div>
+        <div class="flex-el-2" style="flex-grow: 1;">3</div>
+        <div class="flex-el-2" style="flex-grow: 1;">4</div>
+    </div>
+és így akkor felveszi a képernyő teljes szélességét és a második elem 2* olyan széles lesz mint a többi 
+de itt akármennyit meg lehet adni, csak az a lényeg, hogy az összes elemnek meg legyen adva 
+
+    <div class="flex-1">
+        <div class="flex-el-2" style="flex-basis: 200px;">1</div>
+        <div class="flex-el-2" style="flex-basis: 250px;">2</div>
+        <div class="flex-el-2" style="flex-basis: 200px;">3</div>
+        <div class="flex-el-2" style="flex-basis: 300px;">4</div>
+    </div>
+flex-basis!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+itt meg abszolutértékben tudjuk megadni, hogy milyen szélessek legyenek az elemek 
+
+                FLEX-GROW                    FLEX-BASIS
+
+Sorrend 
+    <div class="flex-1">
+        <div class="flex-el-2" style="flex-basis: 200px;order:4;">1</div>
+        <div class="flex-el-2" style="flex-basis: 250px;order:2;">2</div>
+        <div class="flex-el-2" style="flex-basis: 200px;order:1;">3</div>
+        <div class="flex-el-2" style="flex-basis: 300px;order:3;">4</div>
+    </div>
+
+Az order-rel állítjuk be és akkor ilyen sorrendbe rendezi az elemket!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*****************************************************************************************************
+*/

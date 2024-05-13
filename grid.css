@@ -1,0 +1,167 @@
+* {
+    min-height: 5000px; 
+}
+
+.grid-row-1 {
+    display: grid;
+    /* grid-template-columns: 400px 500px 600px; */
+    /* grid-template-columns: 20% 30% 40%; */
+    /*ezt be lehet állítani %-ban is de nem muszály, hogy 100% legyen, csak akkor nem megy ki teljesen a széléig*/
+    /* grid-template-columns: 1fr 2fr 3fr; arányosan így fr-ben meg lehet adni */
+    /* grid-template-columns: auto auto auto; mindegyik ugyanakkora részt vesz fel, ugyanaz mint 1fr 1fr 1fr */
+    grid-template-columns: repeat(3, auto);
+    grid-column-gap: 25px;
+}
+
+.grid-el {
+    border: 1px solid grey;
+    padding-bottom: 100%; 
+    /*
+    ugye a grid-nél nem kell az elemnél beállítani a width-et, csak a magasságot
+    ezt meg lehet úgy oldani, hogy padding-bottom: 100% és akkor olyan magas lesz az elem mint széles 
+    */
+}
+
+/*
+    <div class="grid-row-1">
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+    </div>
+*/
+
+/*
+itt most beállítjuk a row-t is, ezért ehhez több elem kell és itt nem jó, hogy padding-bottom legyen az el-nél 
+mert itt majd beállítjuk a rows-val hogy mekkora legyen úgy, mint a columns-val a width-et!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+de viszont itt a grid-row-2-nél kell egy height, mert azt nem állítja be mint a szélességnél a képernyő szélessége 
+
+
+    <div class="grid-row-2">
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+    </div>
+*/
+
+.grid-row-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-rows: 150px 200px 300px; */
+    grid-template-rows: 1fr 2fr 3fr;
+    height: 600px;
+    /* grid-row-gap: 25px;
+    grid-column-gap: 25px; */
+    grid-gap: 25px;
+}
+
+.grid-el-2 {
+    border: 1px solid grey;
+}
+
+.grid-el-3 {
+    border: 1px solid grey;
+    height: 100px;
+}
+
+/*
+Horizontális poziciónálás 
+    teljesen ugyanúgy, mint a flex-nél 
+    justify-content: start, end, center, space-between, space-around, space-evenly
+*/
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    justify-content: space-evenly;
+}
+
+/*
+fontos, hogy itt az elemeket úgy adjuk meg, hogy px-ben, mert hogy poziciónálni lehessen és ne érjen végig 
+*/
+
+/*
+Vertikális poziciónálás 
+itt kell majd sok elem, hogy be lehessen állítani a row-t 
+az align-content-vel ugyanugy start, end, center, space-between, space-around, space-evenly 
+
+    <div class="grid-4">
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+        <div class="grid-el-2"></div>
+    </div>
+*/
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 800px;
+    border: 1px solid red;
+    grid-template-rows: 150px 150px 150px;
+    align-content: space-evenly;
+}
+
+/*
+    <h4>align items</h4>
+    <div class="grid-5">
+        <div class="grid-el-3"></div>
+        <div class="grid-el-3"></div>
+        <div class="grid-el-3"></div>
+        <div class="grid-el-3"></div>
+    </div>
+
+itt ugye kevesebb elem kell, hogy legyen, hogy egy sor és akkor majd azt tudjuk a start, end, center-vel 
+*/
+
+.grid-5 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 600px;
+    border: 1px solid red;
+    align-items: center;
+}
+
+/*
+Automatikus grid
+
+    <div class="automatic-grid">
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+        <div class="grid-el"></div>
+    </div>
+*/
+
+.automatic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 15px;
+}
+
+/*
+autofill, minmax
+amígy egy elem nagyobb, mint 200px addig annyival töltjük fel a sort 
+ha húzzuk befele és ha már egy elem 200px-nél kisebb lenne, akkor bemegy alulra és így tovább 
+*/
